@@ -1,0 +1,15 @@
+{
+    "ts-node": {
+        "files": true
+    },
+    "files": [
+        "./index.d.ts"
+    ],
+    "compilerOptions": {
+        "sourceMap": true,
+        "outDir": "dist",
+        "strict": true,
+        "lib": ["esnext"],
+        "esModuleInterop": true
+    }
+}

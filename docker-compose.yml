@@ -1,0 +1,17 @@
+version: '3.3'
+
+services: 
+  social_login_server_postgres:
+    container_name: social_login_server_postgres
+    image: 'postgres:12'
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=social_login_server
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=social_login_server_db
+    volumes:
+      - pgdata1:/var/lib/postgresql/data
+
+volumes:
+  pgdata1: {}

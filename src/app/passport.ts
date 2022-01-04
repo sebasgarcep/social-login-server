@@ -10,9 +10,9 @@ import { GOOGLE_CLIENT_ID, JWT_SECRET } from '../values';
 
 const debug = createDebug('social-login-server:app:passport');
 
-function getGoogleTokenStrategy(): Strategy {
+function getGoogleTokenStrategy(clientID: String): Strategy {
     return new GoogleTokenStrategy({
-        clientID: GOOGLE_CLIENT_ID,
+        clientID,
     }, (parsedToken, googleId, done) => {
         debug(`Parsed Token: ${JSON.stringify(parsedToken, null, 4)}`);
         debug(`Google ID: ${googleId}`);
@@ -45,6 +45,6 @@ export default function(app: Express) {
         done(null, user);
     });
 
-    passport.use(getGoogleTokenStrategy());
+    passport.use(getGoogleTokenStrategy(GOOGLE_CLIENT_ID));
     passport.use(getJWTStrategy());
 }
